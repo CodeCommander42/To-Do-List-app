@@ -3,7 +3,7 @@ function newItem()
   // adding new item to list.
   let li = $("<li></li>");
   let inputValue = $("#input").val();
-  li.append(document.createTextNode('X'));
+  li.append(inputValue);
   
 
   if (inputValue === " ")
@@ -12,25 +12,24 @@ function newItem()
   }
     else 
     {
-      let list = $("#list");
-      list.append(li);
+      $("list").append(li);
     }
 
   // crossing out an item from the list
   function crossOut() 
   {
-    li.addClassToggle("strike");
+    li.toggleClass("strike");
   }
 
-  $("li").on("dblclick", crossOut())
+  li.on("dblclick", crossOut())
  
 
   // adding the delete button "X"
-  let crossOutButton = $("<button class='crossOutButton'>");
+  let crossOutButton = $("<crossOutButton></crossOutButton>");
   crossOutButton.append(document.createTextNode('X'));
   li.append(crossOutButton);
 
-  $(crossOutButton).on("click", deleteListItem);
+  crossOutButton.on("click", deleteListItem);
 
   // adding the delete class from css
   function deleteListItem()
@@ -39,15 +38,5 @@ function newItem()
   }
 
   $('#list').sortable();
- 
-
-
-
-
-
-
-
-
-
 
 }
